@@ -1,0 +1,26 @@
+{
+  "name": "18-nosql",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "mongoose": "^6.7.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kristacannady/My-Social-Network-API.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kristacannady/My-Social-Network-API/issues"
+  },
+  "homepage": "https://github.com/kristacannady/My-Social-Network-API#readme"
+}
