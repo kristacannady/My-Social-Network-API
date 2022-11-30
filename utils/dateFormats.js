@@ -1,4 +1,4 @@
-// This file was copy and pasted from UNC Bootcamps pizza-hunt exercise
+// Using module model 
 
 const addDateSuffix = date => {
   let dateStr = date.toString();

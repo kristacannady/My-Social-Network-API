@@ -1,46 +1,46 @@
 const { Schema, model } = require('mongoose');
+const moment = require('moment');
 
-const UserScehma = new Schema(
-  {
-    userName: {
-      type: String,
-      unique: true,
-      required: true,
-      trim: true
+const UserSchema = new Schema({
+    username: {
+        type: String,
+        unique: true,
+        required: true,
+        trim: true
     },
     email: {
-      type: String,
-      unique: true,
-      required: true, 
-      validate: [validateEmail, 'Please fill a valid email address'],
+        type: String,
+        required: true,
+        unique: true,
+        match: [/.+@.+\..+/]
     },
     thoughts: [
-      {
-      type: Schema.Types.ObjectId,
-      ref: 'Thoughts'
-      }
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Thought'
+        }
     ],
     friends: [
-      {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
-      }
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
     ]
-  },
-  {
-    toJSON: {
-      virtuals: true,
-      getters: true
-    },
-    // prevents virtuals from creating duplicate of _id as `id`
-    id: false
-  }
+},
+    {
+        toJSON: {
+            virtuals: true
+        },
+        id: false
+    }
 );
 
-UserScehma.virtual('friendCount').get(function() {
-  return this.friends.length;
+UserSchema.virtual('friendCount').get(function () {
+    return this.friends.length;
 });
 
-const User = model('User', UserScehma);
+// create the User model using the UserSchema
+const User = model('User', UserSchema);
 
-module.export = User;
+// export the User model
+module.exports = User;
